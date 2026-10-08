@@ -9,9 +9,9 @@ def get_llm() -> ChatGroq:
         )
 
     llm = ChatGroq(
-        model=LLM_MODEL,
-        temperature=TEMPERATURE,
-        api_key=GROQ_API_KEY,
+        model= LLM_MODEL,
+        temperature= TEMPERATURE,
+        api_key= GROQ_API_KEY,
     )
 
     return llm
