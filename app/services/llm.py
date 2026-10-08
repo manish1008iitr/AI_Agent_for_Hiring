@@ -12,6 +12,9 @@ def get_llm() -> ChatGroq:
         model= LLM_MODEL,
         temperature= TEMPERATURE,
         api_key= GROQ_API_KEY,
+        model_kwargs = {
+            "tool_choice": "auto"  # or "required", or a specific tool definition
+        }
     )
 
     return llm
