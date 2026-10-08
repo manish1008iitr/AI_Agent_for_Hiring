@@ -4,7 +4,11 @@ from app.services.llm import get_llm
 #Function call to get llm 
 llm = get_llm()
 
-def generate_job_description(hr_prompt: str) -> str:
+#Structured output
+from app.services.schemas import JobDescription
+
+
+def generate_job_description(hr_prompt: str) -> JobDescription:
     """
     Generate a job description from an HR's natural-language request.
     """
@@ -37,10 +41,12 @@ def generate_job_description(hr_prompt: str) -> str:
         ]
     )
 
-    chain = prompt | llm
+    llm_with_structured_output = llm.with_structured_output(JobDescription)
+
+    chain = prompt | llm_with_structured_output
 
     response = chain.invoke(
         {"hr_prompt": hr_prompt}
     )
 
-    return response.content
+    return response
