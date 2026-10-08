@@ -1,0 +1,8 @@
+pydantic
+langchain 
+langchain-core 
+langchain-groq 
+langgraph 
+
+#Environment loading
+python-dotenv 
