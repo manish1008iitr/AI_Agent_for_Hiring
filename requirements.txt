@@ -6,3 +6,7 @@ langgraph
 
 #Environment loading
 python-dotenv 
+
+
+#Database Management 
+sqlalchemy
