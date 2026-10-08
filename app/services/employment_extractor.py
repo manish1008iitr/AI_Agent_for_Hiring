@@ -33,6 +33,7 @@ def extract_employment_blocks(candidate_id: str, experience_text: str,) -> List[
             - Do not invent information.
             - If information is missing, return null.
             - Keep each employment description coherent.
+            - Do not generate block_id. Leave block_id empty.
 
             Return the employment records in the requested
             structured format.
@@ -61,6 +62,12 @@ def extract_employment_blocks(candidate_id: str, experience_text: str,) -> List[
             "experience_text": experience_text,
         }
     )
+
+    for index, employment in enumerate(result.employments):
+        employment.block_id = (
+            f"{candidate_id}_employment_{index}"
+        )
+        employment.candidate_id = candidate_id
 
     return result.employments
 
