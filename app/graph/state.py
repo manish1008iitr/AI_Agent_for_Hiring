@@ -2,6 +2,10 @@ from typing import TypedDict, Literal, List, Dict, Optional, Any
 
 class RecruitmentState(TypedDict, total=False):
     # Original HR request
+
+    """
+    Shared state for the recruitment workflow.
+    """
     user_request: str
 
     # Workflow identification
