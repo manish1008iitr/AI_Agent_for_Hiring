@@ -6,40 +6,33 @@ class RecruitmentState(TypedDict, total=False):
     """
     Shared state for the recruitment workflow.
     """
-    user_request: str
+    
+    # Original request from HR
+    hr_prompt: str
 
-    # Workflow identification
-    workflow_id: str
-    job_id: Optional[int]
+    # Generated job description
+    job_description: Any
 
-    # Job information
-    job_description: Dict[str, Any]
+    # Database ID of the job
+    job_id: int
 
-    # Resume information
-    resume_ids: List[int]
-    candidates: List[Dict[str, Any]]
+    # Candidate/resume information will be added later
+    candidates: list
 
-    # Screening
-    shortlisted_candidates: List[Dict[str, Any]]
+    # Screening results will be added later
+    screening_results: list
 
-    # Interview
-    interview_slots: List[Dict[str, Any]]
-    selected_slots: Dict[int, Dict[str, Any]]
+    # Interview information will be added later
+    interview_details: dict
 
-    # Communication
-    communications: List[Dict[str, Any]]
+    # Communication information will be added later
+    communication_details: dict
 
-     # Human approval
-    pending_approval: Optional[Dict[str, Any]]
-    human_decision: Optional[str]
+    # Human approval information
+    human_approval: dict
 
-    # Agent control
-    current_agent: Optional[str]
-    next_action: Optional[str]
+    # General workflow status
+    status: str
 
-    # Errors
-    errors: List[str]
-
-    # Conversation
-    conversation_id: Optional[str]
-
+    # Errors encountered during workflow
+    error: str
