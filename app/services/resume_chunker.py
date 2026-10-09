@@ -32,7 +32,7 @@ def chunk_resume(resume: ProcessedResume):
                 { "candidate_id": resume.candidate_id, 
                 "file_name": resume.file_name, 
                 "section": section.section_name, 
-                } 
+                }
             ], 
         )
 
