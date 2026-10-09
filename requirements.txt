@@ -10,3 +10,13 @@ python-dotenv
 
 #Database Management 
 sqlalchemy
+
+#Embedding generation 
+langchain_huggingface
+
+
+langchain-experimental 
+langchain-huggingface
+
+# Vector Databse 
+langchain-chroma
