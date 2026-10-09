@@ -5,6 +5,7 @@ __pycache__/
 
 recruitment.db
 test.py
+data
 
 # C extensions
 *.so
