@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional
+from typing import List, Optional, Literal
 
 class JobDescription(BaseModel):
 
@@ -39,3 +39,49 @@ class JobDescription(BaseModel):
     )
 
 
+class SkillAssessment(BaseModel):
+    skill: str = Field(description="Skill required by the job")
+    status: Literal["demonstrated","partially_demonstrated","not_found",] = Field(description="How well the resume evidence supports this skill")
+    evidence: str = Field(description="Supporting resume evidence, or explain that no evidence was found")
+
+
+class CandidateScreeningResult(BaseModel):
+    candidate_id: str = Field(description="Unique candidate identifier")
+
+    overall_fit_score: int = Field(
+        ge=0,
+        le=100,
+        description="Evidence-based alignment score against the job requirements",
+    )
+
+    must_have_assessments: list[SkillAssessment] = Field(
+        description="Assessment of every mandatory job skill"
+    )
+
+    nice_to_have_assessments: list[SkillAssessment] = Field(
+        description="Assessment of preferred job skills"
+    )
+
+    relevant_experience_summary: str = Field(
+        description="Summary of relevant experience demonstrated in the resume"
+    )
+
+    strengths: list[str] = Field(
+        description="Evidence-backed strengths relevant to the role"
+    )
+
+    gaps: list[str] = Field(
+        description="Missing evidence, partial matches, or relevant experience gaps"
+    )
+
+    recommendation: Literal[
+        "strong_match",
+        "possible_match",
+        "insufficient_evidence",
+    ] = Field(
+        description="Suggested level of HR review, not a hiring decision"
+    )
+
+    rationale: str = Field(
+        description="Concise explanation of the assessment based on resume evidence"
+    )
